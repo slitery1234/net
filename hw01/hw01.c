@@ -75,7 +75,7 @@ void doPOST(long read_datasiz, int fd, char* buffer){
 	ptrE = strstr(ptrS, "\r\n");;
 	int boundary_length = ptrE - ptrS + 1;
 	ptrE = strstr(ptrE+1, "\r\n");
-	ptrE = strstr(ptrE+1, "\r\n");;
+	ptrE = strstr(ptrE+1, "\r\n");
 	ptrE = strstr(ptrE+1, "\r\n") + 2;
 	// true content length, 6 means /r/n(boundary)--
 	content_length -= ((ptrE - ptrS) + (boundary_length + 6));
@@ -185,7 +185,7 @@ int main(int argc, char** argv)
 	signal(SIGCLD, SIG_IGN);
 
 	int socket_fd; 
-    // get socket
+	// get socket
 	socket_fd = socket(AF_INET, SOCK_STREAM, 0);
 	if(socket_fd < 0)
 	{
@@ -250,7 +250,8 @@ int main(int argc, char** argv)
 		}
 		else
 		{
-			if(pid == 0) {/*close(socket_fd);*/ dealrequest(accept_fd);}
+			if(pid == 0) 
+				dealrequest(accept_fd);
 		}
 		close(accept_fd);
 	}
