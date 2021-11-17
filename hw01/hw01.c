@@ -70,8 +70,6 @@ void doPOST(long read_datasiz, int fd, char* buffer){
 
 	// move ptrS to boundary start
 	ptrS = strstr(ptrS, "\r\n--") + 2;
-
-	printf("**%s**\n", ptrS);
 	ptrE = strstr(ptrS, "\r\n");;
 	int boundary_length = ptrE - ptrS + 1;
 	ptrE = strstr(ptrE+1, "\r\n");
